@@ -6,16 +6,15 @@ import PackageDescription
 let package = Package(
     name: "GPUPixelLib",
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "GPUPixelLib",
-            targets: ["GPUPixelLib"]),
+            targets: ["gpupixel","vnn_core_ios","vnn_face_ios","vnn_kit_ios"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "GPUPixelLib"),
-
+        .binaryTarget(name: "vnn_face_ios", path: "vnn_face_ios.xcframework"),
+        .binaryTarget(name: "vnn_kit_ios", path: "vnn_kit_ios.xcframework"),
+        .binaryTarget(name: "vnn_core_ios", path: "vnn_core_ios.xcframework"),
+        .binaryTarget(name: "gpupixel", path: "gpupixel.xcframework"),
     ]
 )
+
