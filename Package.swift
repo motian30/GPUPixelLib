@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.8
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -18,6 +18,7 @@ let package = Package(
         .binaryTarget(name: "vnn_kit_ios", path: "vnn_kit_ios.xcframework"),
         .binaryTarget(name: "vnn_core_ios", path: "vnn_core_ios.xcframework"),
         .binaryTarget(name: "gpupixel", path: "gpupixel.xcframework"),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
 
