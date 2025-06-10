@@ -12,14 +12,14 @@
 #import <AppKit/NSOpenGLView.h>
 #endif
 
-#import "gpupixel_target.h"
-#include "target_view.h"
+#import "gpupixel_sink.h"
+#include "sink_render.h"
 
 #if defined(GPUPIXEL_IOS)
-@interface GPUPixelView : UIView <GPUPixelTarget>
+@interface GPUPixelView : UIView <GPUPixelSink>
 #else
-@interface GPUPixelView : NSOpenGLView <GPUPixelTarget>
+@interface GPUPixelView : NSOpenGLView <GPUPixelSink>
 #endif
-@property(readwrite, nonatomic) gpupixel::TargetView::FillMode fillMode;
+@property(readwrite, nonatomic) gpupixel::SinkRender::FillMode fillMode;
 @property(readonly, nonatomic) CGSize sizeInPixels;
 @end

@@ -15,7 +15,7 @@
 @class VideoDataOutputSampleBufferDelegate;
 #endif
 
-NS_GPUPIXEL_BEGIN
+namespace gpupixel {
 class GPUPIXEL_API SourceCamera : public Source {
  public:
   SourceCamera();
@@ -62,10 +62,10 @@ class GPUPIXEL_API SourceCamera : public Source {
       _horizontallyMirrorRearFacingCamera;
   void _updateOutputRotation();
 #endif
-  std::shared_ptr<Framebuffer> _framebuffer;
+  std::shared_ptr<GPUPixelFramebuffer> _framebuffer;
 };
 
-NS_GPUPIXEL_END
+}
 
 #if defined(GPUPIXEL_IOS)
 @interface VideoDataOutputSampleBufferDelegate

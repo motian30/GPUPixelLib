@@ -45,8 +45,6 @@
 #elif __linux__
     // linux
     #define GPUPIXEL_LINUX
-#elif __emscripten__
-  #define GPUPIXEL_LINUX
 #elif __unix__ // all unices not caught above
     // Unix
     #define GPUPIXEL_LINUX
@@ -88,12 +86,7 @@
   #define GLEW_STATIC
   #include <GLFW/glfw3.h>
 #endif
-
-#define NS_GPUPIXEL_BEGIN namespace gpupixel {
-#define NS_GPUPIXEL_END }
-#define USING_NS_GPUPIXEL using namespace gpupixel;
-
-
+ 
 // Pi
 #define PI 3.14159265358979323846264338327950288
 

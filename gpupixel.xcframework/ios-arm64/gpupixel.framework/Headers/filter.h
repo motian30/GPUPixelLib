@@ -7,14 +7,14 @@
 
 #pragma once
 
-#include "gl_program.h"
+#include "gpupixel_program.h"
 #include "gpupixel_macros.h"
 #include "source.h"
-#include "target.h"
+#include "sink.h"
 #include "util.h"
 #include "string"
 
-NS_GPUPIXEL_BEGIN
+namespace gpupixel {
 const std::string kDefaultVertexShader = R"(
     attribute vec4 position; attribute vec4 inputTextureCoordinate;
 
@@ -41,7 +41,7 @@ const std::string kDefaultFragmentShader = R"(
     })";
 #endif
 
-class GPUPIXEL_API Filter : public Source, public Target {
+class GPUPIXEL_API Filter : public Source, public Sink {
  public:
   virtual ~Filter();
 
@@ -68,12 +68,11 @@ class GPUPIXEL_API Filter : public Source, public Target {
 
   std::string getFilterClassName() const { return _filterClassName; };
 
-  virtual void update(int64_t frameTime) override;
+  virtual void render() override;
 
-  virtual bool proceed(bool bUpdateTargets = true,
-                       int64_t frametime = 0) override;
+  virtual bool doRender(bool updateSinks = true) override;
 
-  GLProgram* getProgram() const { return _filterProgram; };
+  GPUPixelGLProgram* getProgram() const { return _filterProgram; };
 
   // property setters & getters
   bool registerProperty(const std::string& name,
@@ -120,7 +119,7 @@ bool registerProperty(
   bool getPropertyType(const std::string& name, std::string& retType);
 
  protected:
-  GLProgram* _filterProgram;
+  GPUPixelGLProgram* _filterProgram;
   GLuint _filterPositionAttribute;
   std::string _filterClassName;
   struct {
@@ -175,4 +174,4 @@ bool registerProperty(
 
 #define REGISTER_FILTER_CLASS(className)
 
-NS_GPUPIXEL_END
+}

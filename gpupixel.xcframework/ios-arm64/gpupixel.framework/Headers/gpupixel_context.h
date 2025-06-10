@@ -8,12 +8,12 @@
 #pragma once
 
 #include <mutex>
-#include "framebuffer_cache.h"
+#include "gpupixel_framebuffer_factory.h"
 #include "gpupixel_macros.h"
 #include "dispatch_queue.h"
 
 #include "filter.h"
-#include "gl_program.h"
+#include "gpupixel_program.h"
 
 #if defined(GPUPIXEL_ANDROID)
   typedef struct _gpu_context_t {
@@ -24,16 +24,16 @@
 #endif
  
  
-NS_GPUPIXEL_BEGIN
+namespace gpupixel {
 class GPUPIXEL_API GPUPixelContext {
  public:
   static GPUPixelContext* getInstance();
   static void destroy();
 
-  FramebufferCache* getFramebufferCache() const;
+  FramebufferFactory* getFramebufferFactory() const;
   //todo(zhaoyou)
-  void setActiveShaderProgram(GLProgram* shaderProgram);
-  void purge();
+  void setActiveShaderProgram(GPUPixelGLProgram* shaderProgram);
+  void clean();
 
   void runSync(std::function<void(void)> func);
   void runAsync(std::function<void(void)> func);
@@ -67,9 +67,9 @@ class GPUPIXEL_API GPUPixelContext {
  private:
   static GPUPixelContext* _instance;
   static std::mutex _mutex;
-  FramebufferCache* _framebufferCache;
-  GLProgram* _curShaderProgram;
-  std::shared_ptr<LocalDispatchQueue> task_queue_;
+  FramebufferFactory* _framebufferFactory;
+  GPUPixelGLProgram* _curShaderProgram;
+  std::shared_ptr<DispatchQueue> task_queue_;
   
 #if defined(GPUPIXEL_ANDROID)
   bool context_inited = false;
@@ -87,4 +87,4 @@ class GPUPIXEL_API GPUPixelContext {
 
 };
 
-NS_GPUPIXEL_END
+}
