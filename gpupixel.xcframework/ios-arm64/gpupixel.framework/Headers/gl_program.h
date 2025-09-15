@@ -14,12 +14,12 @@
 #include <string>
 
 namespace gpupixel {
-class GPUPIXEL_API GPUPixelGLProgram {
+class GPUPIXEL_API GLProgram {
  public:
-  GPUPixelGLProgram();
-  ~GPUPixelGLProgram();
+  GLProgram();
+  ~GLProgram();
 
-  static GPUPixelGLProgram* createByShaderString(
+  static GLProgram* createByShaderString(
       const std::string& vertexShaderSource,
       const std::string& fragmentShaderSource);
   void use();
@@ -46,7 +46,7 @@ class GPUPIXEL_API GPUPixelGLProgram {
   void setUniformValue(int uniformLocation, const void* array, int length);
 
  private:
-  static std::vector<GPUPixelGLProgram*> _programs;
+  static std::vector<GLProgram*> _programs;
   GLuint _program;
   bool _initWithShaderString(const std::string& vertexShaderSource,
                              const std::string& fragmentShaderSource);

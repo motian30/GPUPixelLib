@@ -11,6 +11,7 @@
 #include <map>
 #include "gpupixel_macros.h"
 #include "sink.h"
+#include <mutex>
 #if defined(GPUPIXEL_IOS) || defined(GPUPIXEL_MAC)
 #import "gpupixel_sink.h"
 #endif
@@ -37,9 +38,9 @@ class GPUPIXEL_API Source {
   };
 
   virtual void setFramebuffer(
-      std::shared_ptr<GPUPixelFramebuffer> fb,
+      std::shared_ptr<Framebuffer> fb,
       RotationMode outputRotation = RotationMode::NoRotation);
-  virtual std::shared_ptr<GPUPixelFramebuffer> getFramebuffer() const;
+  virtual std::shared_ptr<Framebuffer> getFramebuffer() const;
   virtual void releaseFramebuffer(bool returnToCache = true);
 
   void setFramebufferScale(float framebufferScale) {
@@ -57,11 +58,12 @@ class GPUPIXEL_API Source {
       int height = 0);
   int RegLandmarkCallback(FaceDetectorCallback callback);
  protected:
-  std::shared_ptr<GPUPixelFramebuffer> _framebuffer;
+  std::shared_ptr<Framebuffer> _framebuffer;
   RotationMode _outputRotation;
   std::map<std::shared_ptr<Sink>, int> _sinks;
   float _framebufferScale;
   std::shared_ptr<FaceDetector> _face_detector;
+  std::mutex sinks_mutex_;
 };
 
 }

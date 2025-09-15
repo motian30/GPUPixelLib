@@ -14,6 +14,7 @@
 #include "box_blur_filter.h"
 #include "box_high_pass_filter.h"
 #include "gaussian_blur_filter.h"
+#include "hsb_filter.h"
 namespace gpupixel {
 class GPUPIXEL_API BeautyFaceFilter : public FilterGroup {
  public:
@@ -26,8 +27,9 @@ class GPUPIXEL_API BeautyFaceFilter : public FilterGroup {
   void setBlurAlpha(float blurAlpha);
   void setWhite(float white);
   void setRadius(float sigma);
+  void setAdjustSaturation(float saturation);
 
-  virtual void setInputFramebuffer(std::shared_ptr<GPUPixelFramebuffer> framebuffer,
+  virtual void setInputFramebuffer(std::shared_ptr<Framebuffer> framebuffer,
                                    RotationMode rotationMode /* = NoRotation*/,
                                    int texIdx /* = 0*/) override;
 
@@ -37,6 +39,9 @@ class GPUPIXEL_API BeautyFaceFilter : public FilterGroup {
   std::shared_ptr<BoxBlurFilter> boxBlurFilter;
   std::shared_ptr<BoxHighPassFilter> boxHighPassFilter;
   std::shared_ptr<BeautyFaceUnitFilter> beautyFilter;
+  std::shared_ptr<HSBFilter> hsbFilter;
+  float m_Brightness;
+  float m_Saturationness;
 };
 
 }

@@ -9,31 +9,31 @@
 
 #include <map>
 #include <string>
-#include "gpupixel_framebuffer.h"
+#include "framebuffer.h"
 #include "gpupixel_macros.h"
 
 namespace gpupixel {
-class GPUPIXEL_API FramebufferFactory {
+class GPUPIXEL_API FramebufferCache {
  public:
-  FramebufferFactory();
-  ~FramebufferFactory();
-  std::shared_ptr<GPUPixelFramebuffer> fetchFramebuffer(
+  FramebufferCache();
+  ~FramebufferCache();
+  std::shared_ptr<Framebuffer> fetchFramebuffer(
       int width,
       int height,
       bool onlyTexture = false,
       const TextureAttributes textureAttributes =
-          GPUPixelFramebuffer::defaultTextureAttribures);
-
-  void clean();
+          Framebuffer::defaultTextureAttribures);
+  void returnFramebuffer(std::shared_ptr<Framebuffer> framebuffer);
+  void purge();
 
  private:
-  std::string uuid(int width,
+  std::string _getHash(int width,
                        int height,
                        bool onlyTexture,
                        const TextureAttributes textureAttributes) const;
-  std::shared_ptr<GPUPixelFramebuffer> _getFramebufferByUuid(const std::string& hash);
+  std::shared_ptr<Framebuffer> _getFramebufferByHash(const std::string& hash);
 
-  std::map<std::string, std::shared_ptr<GPUPixelFramebuffer>> _framebuffers;
+  std::map<std::string, std::shared_ptr<Framebuffer>> _framebuffers;
   std::map<std::string, int> _framebufferTypeCounts;
 };
 

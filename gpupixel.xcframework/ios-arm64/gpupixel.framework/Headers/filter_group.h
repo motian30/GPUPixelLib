@@ -51,11 +51,11 @@ class GPUPIXEL_API FilterGroup : public Filter {
   virtual void render() override;
   virtual void doUpdateSinks() override;
   virtual void setFramebuffer(
-      std::shared_ptr<GPUPixelFramebuffer> fb,
+      std::shared_ptr<Framebuffer> fb,
       RotationMode outputRotation = RotationMode::NoRotation) override;
 
-  virtual std::shared_ptr<GPUPixelFramebuffer> getFramebuffer() const override;
-  virtual void setInputFramebuffer(std::shared_ptr<GPUPixelFramebuffer> framebuffer,
+  virtual std::shared_ptr<Framebuffer> getFramebuffer() const override;
+  virtual void setInputFramebuffer(std::shared_ptr<Framebuffer> framebuffer,
                                    RotationMode rotationMode = NoRotation,
                                    int texIdx = 0) override;
 

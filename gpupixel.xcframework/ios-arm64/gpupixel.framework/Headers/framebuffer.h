@@ -22,14 +22,14 @@ GPUPIXEL_API typedef struct {
   GLenum type;
 } TextureAttributes;
 
-class GPUPIXEL_API GPUPixelFramebuffer {
+class GPUPIXEL_API Framebuffer {
  public:
-  GPUPixelFramebuffer(
+  Framebuffer(
       int width,
       int height,
       bool onlyGenerateTexture = false,
       const TextureAttributes textureAttributes = defaultTextureAttribures);
-  ~GPUPixelFramebuffer();
+  ~Framebuffer();
 
   GLuint getTexture() const { return _texture; }
 
@@ -57,7 +57,7 @@ class GPUPIXEL_API GPUPixelFramebuffer {
   void _generateTexture();
   void _generateFramebuffer();
 
-  //    static std::vector<std::shared_ptr<GPUPixelFramebuffer>> _framebuffers;
+  //    static std::vector<std::shared_ptr<Framebuffer>> _framebuffers;
 };
 
 }
