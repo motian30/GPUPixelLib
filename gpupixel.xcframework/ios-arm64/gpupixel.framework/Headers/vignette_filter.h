@@ -32,6 +32,7 @@ namespace gpupixel {
 
         float m_VigntteStart;
         float m_VignetteEnd;
+        float m_flag;
     };
 
 }
