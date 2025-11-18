@@ -1,0 +1,28 @@
+[
+  {
+  "type": "Sticker2d",
+  "effectId": "1",
+  "effectName": "可爱猫脸贴",
+  "picturePath": "textures/makeup/blush_soft.png",
+  "effectDescription": "可爱猫脸贴",
+  "effectArea": {
+   	      "type": "mask",
+  	      "points": 
+   		    [0.302451, 0.384169,
+   		    0.302986, 0.409377]    
+                    }
+  },
+  {
+  "type": "Sticker2d",
+  "effectId": "2",
+  "effectName": "眼镜",
+  "picturePath": "textures/makeup/blush_soft.png",
+  "effectDescription": "眼镜",
+  "effectArea": {
+   	      "type": "glass",
+  	      "points": 
+   		    [0.302451, 0.384169,
+   		    0.302986, 0.409377]    
+                    }
+  }
+]

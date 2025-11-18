@@ -28,7 +28,10 @@ class GPUPIXEL_API FaceMakeupFilter : public Filter {
 
  
   inline void setBlendLevel(float level) { this->blend_level_ = level; }
+  inline void setAlphaType(float type) { this->_alphaType = type; }
+
   void SetFaceLandmarks(std::vector<float> landmarks);
+  void setBlendMode(int mode){ _blendMode = mode; }
  protected:
   FaceMakeupFilter();
   void setImageTexture(std::shared_ptr<SourceImage> texture);
@@ -47,6 +50,8 @@ class GPUPIXEL_API FaceMakeupFilter : public Filter {
   GLuint _filterPositionAttribute2;
   GLuint _filterTexCoordAttribute = 0;
   GLuint _filterTexCoordAttribute2 = 0;
+  int _blendMode = 0;
+  int _alphaType = 0;
 
   FrameBounds texture_bounds_;
   std::shared_ptr<SourceImage> image_texture_;

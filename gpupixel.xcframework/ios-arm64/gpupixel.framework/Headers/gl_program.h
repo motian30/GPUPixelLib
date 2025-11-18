@@ -30,9 +30,12 @@ class GPUPIXEL_API GLProgram {
 
   void setUniformValue(const std::string& uniformName, int value);
   void setUniformValue(const std::string& uniformName, float value);
+  void setUniformValue(const std::string& uniformName, float* value);
   void setUniformValue(const std::string& uniformName, Vector2 value);
   void setUniformValue(const std::string& uniformName, Matrix3 value);
   void setUniformValue(const std::string& uniformName, Matrix4 value);
+  void setUniformValue(const std::string& uniformName, mat4 value);
+
 
   void setUniformValue(const std::string& uniformName,
                        const void* array,
@@ -40,6 +43,7 @@ class GPUPIXEL_API GLProgram {
 
   void setUniformValue(int uniformLocation, int value);
   void setUniformValue(int uniformLocation, float value);
+  void setUniformValue(int uniformLocation, float* value);
   void setUniformValue(int uniformLocation, Vector2 value);
   void setUniformValue(int uniformLocation, Matrix3 value);
   void setUniformValue(int uniformLocation, Matrix4 value);
@@ -50,6 +54,7 @@ class GPUPIXEL_API GLProgram {
   GLuint _program;
   bool _initWithShaderString(const std::string& vertexShaderSource,
                              const std::string& fragmentShaderSource);
+  void setUniformValue(int uniformLocation, mat4 value);
 };
 
 }

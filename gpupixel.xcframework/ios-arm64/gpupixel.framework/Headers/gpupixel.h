@@ -109,3 +109,13 @@
 #include "vignette_filter.h"
 #include "flipX_filter.h"
 #include "pass_filter.h"
+#include "sticker2d_filter.h"
+#include "transform3d_filter.h"
+#include "glasses_filter.h"
+#include "add_landmarks_filter.h"
+#include "eyes_maskone_filter.h"
+#include "sticker2d_effect_Clown.h"
+#include "sticker2d_effect_Bitie.h"
+#include "sticker2d_effect_eyesmask.h"
+
+

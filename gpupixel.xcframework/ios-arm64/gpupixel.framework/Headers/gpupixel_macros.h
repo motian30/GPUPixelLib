@@ -89,6 +89,9 @@
  
 // Pi
 #define PI 3.14159265358979323846264338327950288
+#include <iostream>
+#define LOG_INFO(msg) std::cout << "[INFO] " << __FILE__ << ":" << __LINE__ << " - " << msg << std::endl
+#define LOG_ERROR(msg) std::cerr << "[ERROR] " << __FILE__ << ":" << __LINE__ << " - " << msg << std::endl
 
 //------------- ENABLE_GL_CHECK Begin ------------ //
 #define ENABLE_GL_CHECK true
